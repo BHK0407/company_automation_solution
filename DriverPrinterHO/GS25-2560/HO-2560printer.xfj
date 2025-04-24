@@ -1,0 +1,27 @@
+[Header]
+Model Name=FF Apeos 2560 PCL 6
+DRVVersion=1539
+Lang=1033
+Sel Name=0048004f007000720069006e007400650072
+[IconName]
+IconName=00530065006c006500630074004e006f006e0065
+[Sel Comment]
+String1=0048004f
+[Duplex]
+Keyword=DuplexLongEdge
+[FavoriteCurrentSelName]
+Keyword=2 Pages Up / 2 Sided
+[OutputBin]
+Keyword=CenterTrayLower
+[PaperSize]
+Keyword=A4
+[PrinterPreference]
+Keyword=True
+[SelectedFormName]
+Keyword=A4
+[TTOption]
+Keyword=Bitmap
+[TrueTypeFont]
+Keyword=UseTrueTypeFont
+[UseTrueTypeFontReplaceBitmapFont]
+Keyword=On

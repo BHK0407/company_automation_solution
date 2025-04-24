@@ -1,0 +1,33 @@
+[Header]
+Model Name=FX ApeosPort 4570 PCL 6
+DRVVersion=1539
+Lang=1033
+Sel Name=0048004f002d0034003500370030007000720069006e007400650072
+[Sel Comment]
+String1=0048004f002d0034003500370030007000720069006e007400650072
+[ColorMode]
+Keyword=Mono
+[Duplex]
+Keyword=DuplexLongEdge
+[FavoriteCurrentSelID]
+Keyword=0
+[FavoriteCurrentSelName]
+Keyword=HO-4570
+[OutputBin]
+Keyword=CenterTrayLower
+[PaperSize]
+Keyword=A4
+[PaperType]
+Keyword=Plain
+[PrinterPreference]
+Keyword=True
+[SelectedFormName]
+Keyword=A4
+[SelectedOutputFormCRC]
+Keyword=-21420
+[TTOption]
+Keyword=Bitmap
+[TrueTypeFont]
+Keyword=UseTrueTypeFont
+[UseTrueTypeFontReplaceBitmapFont]
+Keyword=On
