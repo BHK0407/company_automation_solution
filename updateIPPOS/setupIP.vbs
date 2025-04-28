@@ -20,7 +20,7 @@ WScript.Sleep 100
 WshShell.AppActivate "Microsoft Windows Based Script Host"
 WScript.Sleep 100
 
-' Nhap ten CH va may POS
+' Prompt Enter Input Name
 Do
 	userInput = InputBox("Enter the new settings for POS machine:" & vbCrLf & _
 						 "Format: VNxxxx-POSyy or VNxxxx-PCyy" & vbCrLf & _
@@ -56,7 +56,7 @@ Loop
 '==================== Store Number && Calculate IP ====================
 ' Cong thuc tinh store Number
 If InStr(newUser, "-POS") > 0 Then
-    storeNumber = Mid(newUser, 3, InStr(newUser, "-POS") - 3) ' Kiem tra so sau VN
+    storeNumber = Mid(newUser, 3, InStr(newUser, "-POS") - 3) ' Check for POS format
 ElseIf InStr(newUser, "-PC") > 0 Then
     storeNumber = Mid(newUser, 3, InStr(newUser, "-PC") - 3) ' Check for PC format
 End If
@@ -83,13 +83,13 @@ Else
         If InStr(newUser, "POS01") Then
             ipAddr = "10." & startRange & "." & numbStore & ".8"
             gateway = "10." & startRange & "." & numbStore & ".2"
-        ElseIf InStr(newUser, "POS02") Then ' Corrected ElseIf
+        ElseIf InStr(newUser, "POS02") Then 
             ipAddr = "10." & startRange & "." & numbStore & ".9"
             gateway = "10." & startRange & "." & numbStore & ".2"
         Else
             ' If another POS type, prompt to create a new POS
             MsgBox "This is a new POS type. Please create a new POS configuration in range (5-255).", vbInformation, "New POS Type"
-            WScript.Quit ' Corrected placement, quit if new POS type
+            WScript.Quit ' Quit if new POS type
         End If
     ' Handling for PC01, etc.
     ElseIf InStr(newUser, "PC") > 0 Then ' Corrected ElseIf
