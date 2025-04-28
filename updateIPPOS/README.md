@@ -105,6 +105,10 @@ Notes
 | "No .jpg images found" error | `imageFolder` is empty or missing     | Add `.jpg` images                 |
 | File opening errors         | Missing permissions or missing folders/files | Verify folders and permissions |
 
+![Setup Image](https://github.com/BHK0407/GS25VN_automation_setup/blob/main/updateIPPOS/Cancelled.png)
+![Setup Image](https://github.com/BHK0407/GS25VN_automation_setup/blob/main/updateIPPOS/Format_Error.png)
+![Setup Image](https://github.com/BHK0407/GS25VN_automation_setup/blob/main/updateIPPOS/Update_Setting_POS_PC.png)
+
 
 ### License
 
