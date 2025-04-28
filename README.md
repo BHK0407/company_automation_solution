@@ -1,2 +1,2 @@
-# GS25VN_automation_setup
-Automation to GS25VN
+# Company_automation_setup
+Automatic project to company
