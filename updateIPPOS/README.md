@@ -2,7 +2,7 @@
 
 A VBScript tool to quickly configure IP addresses and usernames for POS/PC machines, complete with a visual confirmation popup.
 
-![alt text](GS25VN_automation_setup/updateIPPOS/setupIP.exe%20Properties%204_28_2025%204_37_56%20PM.png)
+![alt text](GS25VN_automation_setup/updateIPPOS/setupIP-properties.png)
 
 ## Table of Contents
 
