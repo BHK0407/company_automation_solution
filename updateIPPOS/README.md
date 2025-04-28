@@ -71,19 +71,19 @@ The script will:
 
 Input:
 
-    VN0101-POS01
+    VN0999-POS02
 
 Result:
 
-    Username: VN0101-POS01
+    Username: VN0999-POS02
 
-    IP Address: 10.1.101.8
+    IP Address: 10.4.254.9
 
     Subnet Mask: 255.255.255.0
 
-    Gateway: 10.1.101.2
+    Gateway: 10.4.254.2
 
-(Displayed in a popup with a random background image.)
+![Setup Image](https://github.com/BHK0407/GS25VN_automation_setup/blob/main/updateIPPOS/POS_Update_Completed.png)
 
 Notes
 
@@ -109,7 +109,6 @@ Notes
 ![Setup Image](https://github.com/BHK0407/GS25VN_automation_setup/blob/main/updateIPPOS/Format_Error.png)
 ![Setup Image](https://github.com/BHK0407/GS25VN_automation_setup/blob/main/updateIPPOS/Update_Setting_POS_PC.png)
 ![Setup Image](https://github.com/BHK0407/GS25VN_automation_setup/blob/main/updateIPPOS/Error_out_of_range.png)
-
 
 ### License
 
