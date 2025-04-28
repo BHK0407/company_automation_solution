@@ -108,6 +108,7 @@ Notes
 ![Setup Image](https://github.com/BHK0407/GS25VN_automation_setup/blob/main/updateIPPOS/Cancelled.png)
 ![Setup Image](https://github.com/BHK0407/GS25VN_automation_setup/blob/main/updateIPPOS/Format_Error.png)
 ![Setup Image](https://github.com/BHK0407/GS25VN_automation_setup/blob/main/updateIPPOS/Update_Setting_POS_PC.png)
+![Setup Image](https://github.com/BHK0407/GS25VN_automation_setup/blob/main/updateIPPOS/Error_out_of_range.png)
 
 
 ### License
