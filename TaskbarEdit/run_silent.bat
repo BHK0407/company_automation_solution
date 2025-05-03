@@ -13,7 +13,7 @@ if %errorlevel% neq 0 (
     exit /b
 )
 
-:: Run VBS scripts silently
+:: Run scripts silently
 start /min "" wscript.exe "%pwd%\DisableNewsAndInterests.vbs"
 timeout /t 2 >nul
 
