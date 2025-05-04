@@ -15,6 +15,7 @@
     TaskbarEdit/
     ├── DisableNewsAndInterests.vbs
     ├── DisableTaskViewButton.vbs
+    ├── HiddenSearch.vbs
     ├── reset_taskbar_pins.exe
     ├── TaskbarEdit.bat
     └── (self-deletes after running)
