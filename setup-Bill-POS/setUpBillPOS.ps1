@@ -21,7 +21,7 @@ foreach ($user in $profiles ) {
             # if no -and, PowerShell gains error when $userProfilePath is not created.
 
             $username = $Matches[1]
-            Write-Host "Username trung voi filter: $username (SID: $userSID)" -ForegroundColor Yellow 
+            Write-Host "Username matched filter: $username (SID: $userSID)" -ForegroundColor Yellow 
             Start-Sleep -Milliseconds 500
 
             $registryPath = "Registry::HKEY_USERS\$userSID\Software\Microsoft\Internet Explorer\PageSetup"
