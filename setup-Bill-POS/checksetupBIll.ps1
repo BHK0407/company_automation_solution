@@ -1,9 +1,8 @@
 ﻿$registryPath = "HKCU:\Software\Microsoft\Internet Explorer\PageSetup"
 
-# Lấy các giá trị hiện tại
+
 $currentSettings = Get-ItemProperty -Path $registryPath
 
-# Kiểm tra từng giá trị
 if (
     $currentSettings.header -eq "" -and
     $currentSettings.footer -eq "" -and
