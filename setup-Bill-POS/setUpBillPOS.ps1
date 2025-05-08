@@ -1,11 +1,11 @@
-﻿# Tim het profiles trong List profiles
+﻿#  List profiles
 $profileListPath = "HKLM:\SOFTWARE\Microsoft\Windows NT\CurrentVersion\ProfileList"
 
 $profiles = Get-ChildItem $profileListPath | Where-Object {
     $_.PSChildName -match '^S-1-5-21-' # Check for valid user SIDs
 }
 
-# Voi tung user trong profiles
+# Each user from profiles
 foreach ($user in $profiles ) {
     try {
         $userSID = $user.PSChildName
@@ -14,11 +14,11 @@ foreach ($user in $profiles ) {
         Write-Host "Found profile path: $userProfilePath" -ForegroundColor Yellow
         Start-Sleep -Milliseconds 500
 
-        # Tro den username path (C:\Users\VN0018 -> VN0018)
+        # Control to username path (C:\Users\VN0018 -> VN0018)
         if ($userProfilePath -and ($userProfilePath -match '\\Users\\(VN[^\\]*)$')) {
-            #$userProfilePath phải có giá trị (không null hoặc rỗng)
-            #Sau đó mới kiểm tra điều kiện -match
-            #Nếu không có -and, PowerShell có thể bị lỗi nếu $userProfilePath chưa được khởi tạo.
+            # $userProfilePath need valid (no null or nothing)
+            # Check statement -match
+            # if no -and, PowerShell gains error when $userProfilePath is not created.
 
             $username = $Matches[1]
             Write-Host "Username trung voi filter: $username (SID: $userSID)" -ForegroundColor Yellow 
