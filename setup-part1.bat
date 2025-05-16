@@ -19,7 +19,7 @@ set /p ip=<%~dp0info\ip.txt
 
 call :log "Setting static IP and DNS..."
 netsh int ipv4 set address name="Ethernet" static %ip% >> "%logfile%" 2>&1
-netsh int ipv4 set dns name="Ethernet" static 10.0.0.5 >> "%logfile%" 2>&1
+netsh int ipv4 set dns name="Ethernet" static "" >> "%logfile%" 2>&1
 netsh int ipv4 add dns name="Ethernet" 8.8.8.8 index=2 >> "%logfile%" 2>&1
 powershell -command Disable-NetAdapterBinding -Name "*" -ComponentID ms_tcpip6 >> "%logfile%" 2>&1
 
