@@ -1,6 +1,24 @@
 @echo off
 setlocal enabledelayedexpansion
 
+echo      ###########################################################################
+echo       #  .d888888             dP                                  dP            #
+echo        # d8'    88             88                                  88            #
+echo         # 88aaaaa88a dP    dP d8888P .d8888b. 88d8b.d8b. .d8888b. d8888P .d8888b. #
+echo          # 88     88  88    88   88   88'  `88 88'`88'`88 88'  `88   88   88ooood8 #
+echo           # 88     88  88.  .88   88   88.  .88 88  88  88 88.  .88   88   88.  ... #
+echo            # 88     88  `88888P'   dP   `88888P' dP  dP  dP `88888P8   dP   `88888P' #
+echo             #                                                                         #
+echo              #                                                                         #
+echo               #                    .88888.  .d88888b  d8888b. 888888P                   #
+echo                #                   d8'   `88 88.    "'     `88 88'                       #
+echo                 #                   88        `Y88888b. .aaadP' 88baaa.                   #
+echo                  #                   88   YP88       `8b 88'         `88                   #
+echo                   #                   Y8.   .88 d8'   .8P 88.          88                   #
+echo                    #                    `88888'   Y88888P  Y88888P d88888P                   #
+echo                     ###########################################################################
+echo.
+
 :: === Thiết lập log file ===
 set "logfile=%~dp0setup-part2.log"
 echo [%DATE% %TIME%] === Starting Setup Part 2 === > "%logfile%" 2>&1
