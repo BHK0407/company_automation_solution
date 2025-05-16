@@ -1,23 +1,28 @@
 @echo off
 setlocal enabledelayedexpansion
 
-echo      ###########################################################################
-echo       #  .d888888             dP                                  dP            #
-echo        # d8'    88             88                                  88            #
-echo         # 88aaaaa88a dP    dP d8888P .d8888b. 88d8b.d8b. .d8888b. d8888P .d8888b. #
-echo          # 88     88  88    88   88   88'  `88 88'`88'`88 88'  `88   88   88ooood8 #
-echo           # 88     88  88.  .88   88   88.  .88 88  88  88 88.  .88   88   88.  ... #
-echo            # 88     88  `88888P'   dP   `88888P' dP  dP  dP `88888P8   dP   `88888P' #
-echo             #                                                                         #
-echo              #                                                                         #
-echo               #                    .88888.  .d88888b  d8888b. 888888P                   #
-echo                #                   d8'   `88 88.    "'     `88 88'                       #
-echo                 #                   88        `Y88888b. .aaadP' 88baaa.                   #
-echo                  #                   88   YP88       `8b 88'         `88                   #
-echo                   #                   Y8.   .88 d8'   .8P 88.          88                   #
-echo                    #                    `88888'   Y88888P  Y88888P d88888P                   #
-echo                     ###########################################################################
+:: === Hiển thị ASCII Art Logo với hiệu ứng màu và nghiêng ===
 echo.
+powershell -Command "Write-Host '     ###########################################################################' -ForegroundColor White"
+powershell -Command "Write-Host '      #  .d888888             dP                                  dP            #' -ForegroundColor White"
+powershell -Command "Write-Host '       # d8''    88             88                                  88            #' -ForegroundColor White"
+powershell -Command "Write-Host '        # 88aaaaa88a dP    dP d8888P .d8888b. 88d8b.d8b. .d8888b. d8888P .d8888b. #' -ForegroundColor White"
+powershell -Command "Write-Host '         # 88     88  88    88   88   88''  `88 88''`88''`88 88''  `88   88   88ooood8 #' -ForegroundColor White"
+powershell -Command "Write-Host '          # 88     88  88.  .88   88   88.  .88 88  88  88 88.  .88   88   88.  ... #' -ForegroundColor White"
+powershell -Command "Write-Host '           # 88     88  `88888P''   dP   `88888P'' dP  dP  dP `88888P8   dP   `88888P'' #' -ForegroundColor White"
+powershell -Command "Write-Host '            #                                                                         #' -ForegroundColor White"
+powershell -Command "Write-Host '             #                                                                         #' -ForegroundColor White"
+powershell -Command "Write-Host '              #                    .88888.  .d88888b  d8888b. 888888P                   #' -ForegroundColor Cyan"
+powershell -Command "Write-Host '               #                   d8''   `88 88.    ''     `88 88''                        #' -ForegroundColor Cyan"
+powershell -Command "Write-Host '                #                   88        `Y88888b. .aaadP'' 88baaa.                   #' -ForegroundColor Cyan"
+powershell -Command "Write-Host '                 #                   88   YP88       `8b 88''         `88                   #' -ForegroundColor Cyan"
+powershell -Command "Write-Host '                  #                   Y8.   .88 d8''   .8P 88.          88                   #' -ForegroundColor Cyan"
+powershell -Command "Write-Host '                   #                    `88888''   Y88888P  Y88888P d88888P                   #' -ForegroundColor Cyan"
+powershell -Command "Write-Host '                    ###########################################################################' -ForegroundColor Cyan"
+powershell -Command "Write-Host ''"
+powershell -Command "Write-Host '                              ──────── ' -ForegroundColor White -NoNewline; Write-Host 'GS25' -ForegroundColor Cyan -NoNewline; Write-Host ' Automator ────────' -ForegroundColor White"
+echo.
+timeout /t 1 >nul
 
 :: === Thiết lập log file ===
 set "logfile=%~dp0setup-part2.log"
