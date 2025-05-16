@@ -26,7 +26,7 @@ call :log "Installing OneDrive..."
 start /wait "%~dp0\onedrive\OneDriveSetup.exe" /silent /allusers >> "%logfile%" 2>&1
 
 call :log "Installing SQL Server Express..."
-start /wait %~dp0\SQLEXPRADV_x64_ENU\setup.exe /Q /HIDECONSOLE=1 /ACTION=INSTALL /IACCEPTSQLSERVERLICENSETERMS=1 /FEATURES=SQLENGINE,Tools /UPDATEENABLED=0 /INSTANCENAME="sqlexpress" /ADDCURRENTUSERASSQLADMIN=1 /SECURITYMODE=SQL /SKIPRULES=RebootRequiredCheck /SAPWD="gs25@localadmin" /SQLSVCSTARTUPTYPE=AUTOMATIC /BROWSERSVCSTARTUPTYPE=AUTOMATIC >> "%logfile%" 2>&1
+start /wait %~dp0\SQLEXPRADV_x64_ENU\setup.exe /Q /HIDECONSOLE=1 /ACTION=INSTALL /IACCEPTSQLSERVERLICENSETERMS=1 /FEATURES=SQLENGINE,Tools /UPDATEENABLED=0 /INSTANCENAME="sqlexpress" /ADDCURRENTUSERASSQLADMIN=1 /SECURITYMODE=SQL /SKIPRULES=RebootRequiredCheck /SAPWD="" /SQLSVCSTARTUPTYPE=AUTOMATIC /BROWSERSVCSTARTUPTYPE=AUTOMATIC >> "%logfile%" 2>&1
 
 call :log "Importing registry environment settings..."
 reg import "%~dp0\invaironment\invaironment_win10.reg" >> "%logfile%" 2>&1
@@ -76,7 +76,7 @@ call :log "Disabling Scheduled Defrag task..."
 schtasks /Change /DISABLE /TN "\Microsoft\Windows\Defrag\ScheduledDefrag" >> "%logfile%" 2>&1
 
 call :log "Setting Administrator password..."
-net user administrator gs25@localadmin >> "%logfile%" 2>&1
+net user administrator "">> "%logfile%" 2>&1
 
 call :log "Preparing POS bill form setup..."
 set /p user=<"%~dp0info\user.txt"
