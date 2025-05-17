@@ -2,6 +2,10 @@
 
 This project helps automate the first-time setup of a Windows-based Point of Sale (POS) terminal after a fresh install. It takes care of things like setting the IP address, creating POS users, renaming the computer, tweaking the taskbar, and turning off those annoying first sign-in prompts — basically speeding up the boring setup stuff so you can move on to the real work faster.
 
+![Setup Image](https://github.com/BHK0407/company_automation_solution/blob/main/images/setup-part1.png)
+![Setup Image](https://github.com/BHK0407/company_automation_solution/blob/main/images/setup-part2.png)
+![Setup Image](https://github.com/BHK0407/company_automation_solution/blob/main/images/autologin.png)
+
 ##  Folder Structure
     ├── setup-part1.bat # Main script for initial system setup
     ├── setup-part2.bat # Continuation script executed after reboot
