@@ -51,6 +51,18 @@ call :log "Importing First Sign-In registry settings..."
 reg import "%~dp0BlockFirstSignIn\Disable_Privacy_settings_experience_on_user_logon.reg" >> "%logfile%" 2>&1
 reg import "%~dp0BlockFirstSignIn\Disable_User_First_Sign-in_Animation.reg" >> "%logfile%" 2>&1
 
+:: Delete "Zone.Identifier"
+:: Get Silent alert
+call :log "Delete "Zone.Identifier on the screen..."
+powershell -command "Get-Item '%~dp0TaskbarEdit\*.vbs' | ForEach-Object {Remove-Item -Path $_.FullName -Stream 'Zone.Identifier' -ErrorAction SilentlyContinue}" >> "%logfile%" 2>&1
+timeout /t 5 >nul
+
+ :: try to confirm for all files, try to each files: -confirm
+call :log "Delete "Unblock-File on folder on the screen..."
+powershell -command "Get-ChildItem '%~dp0' -recurse | Unblock-File " >> "%logfile%" 2>&1
+timeout /t 5 >nul
+:: Unblock all filese: PS C:\> gci "C:\setupPOS\" -recurse | Unblock-File -confirm
+
 :: TaskbarEdit
 call :log "Disabling News and Interests..."
 start /min "" %~dp0TaskbarEdit\DisableNewsAndInterests.vbs >> "%logfile%" 2>&1
