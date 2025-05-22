@@ -37,16 +37,16 @@ if not exist "%~dp0after_reboot.flag" (
 call :log "Starting setup-part2.bat..."
 
 call :log "Installing 7zip..."
-start /wait "%~dp0\7z1900-x64.exe" /S >> "%logfile%" 2>&1
+start /wait %~dp0\7z1900-x64.exe /S >> "%logfile%" 2>&1
 
 call :log "Installing NodeJS..."
 start /wait msiexec.exe /i "%~dp0\nodejs\node.msi" /quiet >> "%logfile%" 2>&1
 
 call :log "Installing WebView2..."
-start /wait "%~dp0\webview\WebView2X64.exe" /silent /install >> "%logfile%" 2>&1
+start /wait %~dp0\webview\WebView2X64.exe /silent /install >> "%logfile%" 2>&1
 
 call :log "Installing OneDrive..."
-start /wait "%~dp0\onedrive\OneDriveSetup.exe" /silent /allusers >> "%logfile%" 2>&1
+start /wait %~dp0\onedrive\OneDriveSetup.exe /silent /allusers >> "%logfile%" 2>&1
 
 call :log "Installing SQL Server Express..."
 start /wait %~dp0\SQLEXPRADV_x64_ENU\setup.exe /Q /HIDECONSOLE=1 /ACTION=INSTALL /IACCEPTSQLSERVERLICENSETERMS=1 /FEATURES=SQLENGINE,Tools /UPDATEENABLED=0 /INSTANCENAME="sqlexpress" /ADDCURRENTUSERASSQLADMIN=1 /SECURITYMODE=SQL /SKIPRULES=RebootRequiredCheck /SAPWD="" /SQLSVCSTARTUPTYPE=AUTOMATIC /BROWSERSVCSTARTUPTYPE=AUTOMATIC >> "%logfile%" 2>&1
