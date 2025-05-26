@@ -86,9 +86,3 @@ This script is used to automatically set up the POS system.
 
 ---
 
-## ⚠️ Notes
-
-- This setup currently supports stores with **up to 2 POS machines** only.  
-  Support for **stores with 3 or more POS** machines will be added once the process is stabilized.
-
-- After logging into the POS machine, click on the **Search** bar and select **Undo** to **completely hide the search bar**.
