@@ -46,12 +46,10 @@ This project helps automate the first-time setup of a Windows-based Point of Sal
 This folder contains files used to assign permissions in the Registry Editor.  
 > ⚠️ **Note:** Make sure both files are present. In case of issues after running the script, they are required to access the Registry Editor.
 
----
 
 ### **Edit Group Policy**
 Used to configure the POS system using the Local Group Policy Editor (`gpedit.msc`).
 
----
 
 ### **Setup Network**
 Used to input store information. You only need to provide the store name and the correct POS identifier (e.g., POS01, POS02, etc.).
@@ -66,18 +64,14 @@ Used to input store information. You only need to provide the store name and the
 | "No .jpg images found" error  | `imageFolder` is empty or missing            | Add `.jpg` images                     |
 | File opening errors           | Missing permissions or files/folders         | Verify folders and permissions        |
 
----
-
 ### **Setup for Form POS Bill**
 This folder is used to modify the paper size settings for the receipt printer.
 
----
 
 ### **Audit Settings**
 Helps verify file access when scripts run without triggering SmartScreen or Security Warning errors. Also confirms whether the POS billing form is executed successfully.
 
 ![Setup Image](https://github.com/BHK0407/company_automation_solution/blob/main/images/checkSecurityWarning.png)
----
 
 ### **Run File**
 This script is used to automatically set up the POS system.  
@@ -85,5 +79,4 @@ This script is used to automatically set up the POS system.
 
 > ⚠️ **Important:** All setup steps must be executed with **Administrator** privileges.
 
----
 
