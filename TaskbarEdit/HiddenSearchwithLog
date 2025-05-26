@@ -1,0 +1,77 @@
+' Hidden Search box
+
+' Set registry values in both HKCU and HKU.
+' SearchBarTaskMode = 0 (hide search)
+' SearchBarTaskModeCache = 1 (force setting)
+
+Option Explicit
+On Error Resume Next
+
+Dim objShell, objFSO, args
+Dim userFolder, profile, ntUser
+Dim doAllUsers
+
+Set objShell = CreateObject("WScript.Shell")
+Set objFSO = CreateObject("Scripting.FileSystemObject")
+Set args = WScript.Arguments
+
+doAllUsers = False
+If args.Count > 0 Then doAllUsers = True
+
+' --- Ghi lỗi (nếu có) ra log cùng folder ---
+Dim scriptPath
+scriptPath = objFSO.GetParentFolderName(WScript.ScriptFullName)
+
+Sub LogError(action)
+    If Err.Number <> 0 Then
+        Dim logFile, f
+        logFile = scriptPath & "\vbs-error.log"
+        Set f = objFSO.OpenTextFile(logFile, 8, True)
+        f.WriteLine Now & " - Error: " & Err.Description & " (Code: " & Err.Number & ") in: " & action
+        f.Close
+        Err.Clear
+    End If
+End Sub
+
+' Apply to current user
+Dim regPath
+regPath = "HKCU\SOFTWARE\Microsoft\Windows\CurrentVersion\Search\"
+objShell.RegWrite regPath & "SearchboxTaskbarMode", 0, "REG_DWORD" : LogError("HKCU SearchboxTaskbarMode")
+objShell.RegWrite regPath & "SearchboxTaskbarModeCache", 1, "REG_DWORD" : LogError("HKCU SearchboxTaskbarModeCache")
+
+If doAllUsers Then
+    ' Modify Default user hive if available
+    If objFSO.FileExists("C:\Users\Default\NTUSER.DAT") Then
+        objShell.Run "reg load HKU\DefaultUser C:\Users\Default\NTUSER.DAT", 0, True : LogError("Load DefaultUser Hive")
+
+        objShell.Run "reg add ""HKU\DefaultUser\SOFTWARE\Microsoft\Windows\CurrentVersion\Search"" /f", 0, True : LogError("Add Search key to DefaultUser")
+
+        objShell.Run "reg add ""HKU\DefaultUser\SOFTWARE\Microsoft\Windows\CurrentVersion\Search"" /v SearchboxTaskbarMode /t REG_DWORD /d 0 /f", 0, True : LogError("DefaultUser SearchboxTaskbarMode")
+        objShell.Run "reg add ""HKU\DefaultUser\SOFTWARE\Microsoft\Windows\CurrentVersion\Search"" /v SearchboxTaskbarModeCache /t REG_DWORD /d 1 /f", 0, True : LogError("DefaultUser SearchboxTaskbarModeCache")
+
+        objShell.Run "reg unload HKU\DefaultUser", 0, True : LogError("Unload DefaultUser Hive")
+    End If
+
+    ' Loop user profiles
+    Set userFolder = objFSO.GetFolder("C:\Users")
+
+    For Each profile In userFolder.SubFolders
+        Dim profileName
+        profileName = LCase(profile.Name)
+
+        If profileName <> "default" And profileName <> "public" And profileName <> "default user" Then
+            ntUser = profile.Path & "\NTUSER.DAT"
+            If objFSO.FileExists(ntUser) Then
+                If objShell.Run("reg load HKU\TempHive """ & ntUser & """", 0, True) = 0 Then
+                    LogError("Load TempHive: " & ntUser)
+
+                    objShell.Run "reg add ""HKU\TempHive\SOFTWARE\Microsoft\Windows\CurrentVersion\Search"" /f", 0, True : LogError("Add Search key to TempHive")
+                    objShell.Run "reg add ""HKU\TempHive\SOFTWARE\Microsoft\Windows\CurrentVersion\Search"" /v SearchboxTaskbarMode /t REG_DWORD /d 0 /f", 0, True : LogError("TempHive SearchboxTaskbarMode")
+                    objShell.Run "reg add ""HKU\TempHive\SOFTWARE\Microsoft\Windows\CurrentVersion\Search"" /v SearchboxTaskbarModeCache /t REG_DWORD /d 1 /f", 0, True : LogError("TempHive SearchboxTaskbarModeCache")
+
+                    objShell.Run "reg unload HKU\TempHive", 0, True : LogError("Unload TempHive")
+                End If
+            End If
+        End If
+    Next
+End If
