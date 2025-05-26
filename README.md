@@ -39,7 +39,7 @@ This project helps automate the first-time setup of a Windows-based Point of Sal
 - Log all steps into `setup-part1.log` and `setup-part2.log` for debugging and tracking
 
 ## POS Setup Instructions
-![Setup Image](https://github.com/BHK0407/company_automation_solution/blob/main/images/folder-setup.png)
+![Setup Image](https://github.com/BHK0407/company_automation_solution/blob/main/images/folder-setupPOS.png)
 ---
 
 ### **Setup for 1st Login**
