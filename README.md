@@ -39,7 +39,7 @@ This project helps automate the first-time setup of a Windows-based Point of Sal
 - Log all steps into `setup-part1.log` and `setup-part2.log` for debugging and tracking
 
 ## POS Setup Instructions
-
+![Setup Image](https://github.com/BHK0407/company_automation_solution/blob/main/images/folder-setup.png)
 ---
 
 ### **Setup for 1st Login**
@@ -75,7 +75,7 @@ This folder is used to modify the paper size settings for the receipt printer.
 
 ### **Audit Settings**
 Helps verify file access when scripts run without triggering SmartScreen or Security Warning errors. Also confirms whether the POS billing form is executed successfully.
-
+![Setup Image](https://github.com/BHK0407/company_automation_solution/blob/main/images/checkSecurityWarning.png)
 ---
 
 ### **Run File**
