@@ -42,7 +42,7 @@ set /p ip=<%~dp0info\ip.txt
 
 call :log "Setting static IP and DNS..."
 netsh int ipv4 set address name="Ethernet" static %ip% >> "%logfile%" 2>&1
-netsh int ipv4 set dns name="Ethernet" static "" >> "%logfile%" 2>&1
+netsh int ipv4 set dns name="Ethernet" static 10.0.0.5 >> "%logfile%" 2>&1
 netsh int ipv4 add dns name="Ethernet" 8.8.8.8 index=2 >> "%logfile%" 2>&1
 powershell -command Disable-NetAdapterBinding -Name "*" -ComponentID ms_tcpip6 >> "%logfile%" 2>&1
 
@@ -53,15 +53,21 @@ reg import "%~dp0BlockFirstSignIn\Disable_User_First_Sign-in_Animation.reg" >> "
 
 :: Delete "Zone.Identifier"
 :: Get Silent alert
-call :log "Zone.Identifier on the screen..."
+call :log "Delete "Zone.Identifier on the screen..."
 powershell -command "Get-Item '%~dp0TaskbarEdit\*.vbs' | ForEach-Object {Remove-Item -Path $_.FullName -Stream 'Zone.Identifier' -ErrorAction SilentlyContinue}" >> "%logfile%" 2>&1
 timeout /t 5 >nul
 
  :: try to confirm for all files, try to each files: -confirm
-call :log "Unblock-File on folder on the screen..."
+call :log "Delete Unblock-File on folder on the screen..."
 powershell -command "Get-ChildItem '%~dp0' -recurse | Unblock-File " >> "%logfile%" 2>&1
 timeout /t 5 >nul
+
 :: Unblock all filese: PS C:\> gci "C:\setupPOS\" -recurse | Unblock-File -confirm
+
+:: Check Security Warning-SmartScreen
+call :log "Check Security Warning-SmartScreen..."
+powershell -ExecutionPolicy Bypass -File "%~dp0checkSecurityWarning-SmartScreen.ps1" >> "%logfile%" 2>&1
+timeout /t 5 >nul
 
 :: TaskbarEdit
 call :log "Disabling News and Interests..."
@@ -73,7 +79,7 @@ start /min "" %~dp0TaskbarEdit\DisableTaskViewButton.vbs >> "%logfile%" 2>&1
 timeout /t 5 >nul
 
 call :log "Hiding Search Box..."
-start /min "" %~dp0TaskbarEdit\HiddenSearch.vbs >> "%logfile%" 2>&1
+cscript.exe //nologo %~dp0TaskbarEdit\HiddenSearch.vbs >> "%logfile%" 2>&1
 timeout /t 5 >nul
 
 call :log "Importing taskbar reset registry..."
