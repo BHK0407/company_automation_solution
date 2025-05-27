@@ -6,21 +6,6 @@ This project helps automate the first-time setup of a Windows-based Point of Sal
 ![Setup Image](https://github.com/BHK0407/company_automation_solution/blob/main/images/setup-part2.png)
 ![Setup Image](https://github.com/BHK0407/company_automation_solution/blob/main/images/autologin.png)
 
-##  Folder Structure
-    ├── setup-part1.bat # Main script for initial system setup
-    ├── setup-part2.bat # Continuation script executed after reboot
-    ├── info
-    │ ├── ip.txt # Static IP to be configured
-    │ ├── user.txt # Username used for user creation and renaming PC
-    │ └── setupIP.exe # Custom tool for internal network setup
-    ├── TaskbarEdit
-    │ ├── DisableNewsAndInterests.vbs 
-    │ ├── DisableTaskViewButton.vbs
-    │ └── HiddenSearch.vbs
-    ├── BlockFirstSignIn
-    │ ├── Disable_Privacy_settings_experience_on_user_logon.reg
-    │ ├── Disable_User_First_Sign-in_Animation.reg
-
 ##  Key Features
 
 - Set static IP and DNS configuration
