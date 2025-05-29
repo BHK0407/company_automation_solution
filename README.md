@@ -39,7 +39,7 @@ Used to configure the POS system using the Local Group Policy Editor (`gpedit.ms
 ### **Setup Network**
 Used to input store information. You only need to provide the store name and the correct POS identifier (e.g., POS01, POS02, etc.).
 ![Setup Image](https://github.com/BHK0407/GS25VN_automation_setup/blob/main/updateIPPOS/Update_Setting_POS_PC.png)
-![Setup Image](https://github.com/BHK0407/GS25VN_automation_setup/blob/main/image/New-POS-Type.png)
+![Setup Image](https://github.com/BHK0407/GS25VN_automation_setup/blob/main/images/New-POS-Type.png)
 
 > ✅ **Troubleshooting errors related to renaming the POS machine:**
 
