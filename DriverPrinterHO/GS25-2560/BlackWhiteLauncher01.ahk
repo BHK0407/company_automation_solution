@@ -4,7 +4,7 @@ SendMode Input  ; Recommended for new scripts due to its superior speed and reli
 SetWorkingDir %A_ScriptDir%  ; Ensures a consistent starting directory.
 
 ; IP Address (and Port Name) for Black/White-01
-ipAdd := "10.1.2.8"
+ipAdd := "" ; IP you would like to put
 targetPrinter := "Black/White-01"
 
 ; Check for admin rights
