@@ -38,7 +38,7 @@ set /p ip=<%~dp0ip.txt
 
 call :log "Setting static IP and DNS..." 
 netsh int ipv4 set address name="Ethernet" static %ip% >> "%logfile%" 2>&1
-netsh int ipv4 set dns Name="Ethernet" static 10.0.0.5 >> "%logfile%" 2>&1
+netsh int ipv4 set dns Name="Ethernet" static 0.0.0.0 >> "%logfile%" 2>&1
 netsh int ipv4 add dns Name="Ethernet" 8.8.8.8 index=2 >> "%logfile%" 2>&1
 
 :: Configure firewall
