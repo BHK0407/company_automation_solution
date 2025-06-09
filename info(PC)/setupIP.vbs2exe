@@ -1,0 +1,16 @@
+<convert2exe>
+    <uacLevel>asInvoker</uacLevel>
+    <iconfile>C:\Users\BuiHungKhang\SON KIM CORPORATION\GS25VN-ITDept - Documents\19.Setup_POS\info\favicon.ico</iconfile>
+    <folder>C:\Users\BuiHungKhang\SON KIM CORPORATION\GS25VN-ITDept - Documents\19.Setup_POS\info\setupIP_executable</folder>
+    <dependencies />
+    <mode>gui</mode>
+    <appName>SetupIP</appName>
+    <bits>64</bits>
+    <silent>no</silent>
+    <unicode>no</unicode>
+    <regfreecom>no</regfreecom>
+    <custom_description>Setup IP in an automatic way</custom_description>
+    <custom_copyright></custom_copyright>
+    <custom_productName>IP Automation</custom_productName>
+    <custom_version>1.0.0.1</custom_version>
+</convert2exe>
