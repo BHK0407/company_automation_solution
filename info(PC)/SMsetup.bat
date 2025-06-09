@@ -14,7 +14,7 @@ pause
 exit /b
 
 :part1
-:: Nội dung từ SM-part1.bat
+::  SM-part1.bat
 REM ------------------- BEGIN SM-part1.bat -------------------
 @echo off
 setlocal enabledelayedexpansion
@@ -112,7 +112,7 @@ ping 127.0.0.1 -n 1 -w 200 > nul
 goto :eof
 
 :part2
-:: Nội dung từ SM-part2.bat
+::  SM-part2.bat
 REM ------------------- BEGIN SM-part2.bat -------------------
 @echo off
 setlocal enabledelayedexpansion
@@ -169,7 +169,7 @@ del "%~dp0after_reboot.flag"  >> "%logfile%" 2>&1
 call :log "Restarting computer to join domain..." 
 shutdown /r /t 5 /c "Restarting to %user% join Company domain..." /f >> "%logfile%" 2>&1
 
-:: === Hàm ghi log có timestamp ===
+:: ===  log  ===
 :log
 set "ts=[%DATE% %TIME%]"
 echo !ts! %~1 >> "%logfile%"
