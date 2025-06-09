@@ -1,15 +1,15 @@
 @echo off
 
-:: === Bắt đầu phần 1 ===
+:: === 1 ===
 call :part1
 
-:: === Bắt đầu phần delay ===
+:: === delay ===
 call :delay-part
 
-:: === Bắt đầu phần 2 ===
+:: === 2 ===
 call :part2
 
-echo === Hoàn tất cài đặt ===
+echo === Finish ===
 pause
 exit /b
 
