@@ -1,5 +1,5 @@
 ﻿# Logic to test connection to domain controller
-$dcIP = "10.1.1.21"
+$dcIP = ""
 if (-not (Test-Connection -ComputerName $dcIP -Count 3 -Quiet)){
     Write-Host "Domain Controller $dcIP is unreachable. Aborting domain join" -ForegroundColor Red
     exit 1
@@ -19,8 +19,8 @@ try {
     }
 }
 
-$domain = "gs25vn.local"
-$password = "gs25@123456" | ConvertTo-SecureString -asPlainText -Force
+$domain = ""
+$password = "" | ConvertTo-SecureString -asPlainText -Force
 $username = "$domain\joindomain" 
 $credential = New-Object System.Management.Automation.PSCredential($username,$password)
 
