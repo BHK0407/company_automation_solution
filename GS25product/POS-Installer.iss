@@ -24,10 +24,10 @@ Name: "C:\setupPOS"
 
 [Run]
 ; setupPOS.zip unzip to C:\
-Filename: "{tmp}\7za.exe"; Parameters: "X {tmp}\setupPOS.zip -oC:\ -y"; Flags: waituntilterminated
+Filename: "{tmp}\7za.exe"; Parameters: "X {tmp}\setupPOS.zip -oC:\ -y"; Flags: runhidden waituntilterminated
  
 ; POSRunning.bat
-Filename: "C:\setupPOS\POSRunning.bat"; Description: "Launch POS System"; Flags: postinstall ; Check: FileExistsCheck
+Filename: "C:\setupPOS\POSRunning.bat"; Description: "Launch POS System"; Flags: postinstall runhidden ; Check: FileExistsCheck
 
 [Code]
 function FileExistsCheck(): Boolean;
