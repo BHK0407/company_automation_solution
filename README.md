@@ -62,9 +62,11 @@ Helps verify file access when scripts run without triggering SmartScreen or Secu
 
 ### **Run File**
 This script is used to automatically set up the POS system.  
-> To run the setup, execute **`setup-part1.bat`**. If successful, **`setup-part2.bat`** will run automatically after receiving a success flag from part 1. A log file will be generated for troubleshooting.
-> ⚠️ **Update:** Now, only use the file from the latest version **release** that is in ZIP format.
+
+⚠️ **Update:** Now, only use the file from the latest version **release** that is in ZIP format.
+
 ![Setup Image](https://github.com/BHK0407/company_automation_solution/blob/main/images/Wrapped-PacketPython.png)
-> ⚠️ **Important:** All setup steps must be executed with **Administrator** privileges.
+
+⚠️ **Important:** All setup steps must be executed with **Administrator** privileges.
 
 
