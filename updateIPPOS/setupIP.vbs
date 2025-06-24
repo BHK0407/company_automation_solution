@@ -1,32 +1,32 @@
 ''[Vbs To Exe]
 ''
 ''aMRA3AfQRNjBHMlQ
-''dNRK20SCCrvGYK0jt+cD5DhKgHZ1NK0dolXBAqsUSkWICMeltHYVoHKk6AwViFBNRE4/E6aOOhSZttVhtVEg9vJEuc5u4YSMu3V0v9Zu7JynBE8GAX72pckKjzGxSgCA89WdcSd7kVFX
+''dNRK20SCCrvGYJE+tPpY6DkWtVhhLKM1pVqBDJQ0JA==
 ''aMRAxQXMWY+TTpxw77VAuA==
 ''bdZWxhPQWJzcAdhQ
 ''atNMx0SCCsj8
-''e9hX2AXLCsXcD/g=
+''e9hX2AXLCsXcDvg=
 ''eNNMx0SCCsj8
 ''bdZG3gHNCsXcDPg=
 ''cNJR3QvbCsXcDPg=
 ''edJJ2graUpGIHMVw4pU=
 ''csFAxxPNQ4yZHMVw4pU=
 ''fMNRxw3dX4yZT9ht8qVw
-''ed5WxQjeU9jBHMlQ
+''ed5WxQjeU9jBHMhQ
 ''a95L0wufF9jNPA==
-''e95J0BLaWIuVU5Zw77VBlkoR2z4=
-''bcVK0RHcXo6ZTos5vftQhVoOxw4uaMo=
+''e95J0BLaWIuVU5Zw77VBlkoR2T4=
+''bcVK0RHcXo6ZTos5vftQhVoOxw4uaso=
 ''bcVK0RHcXpadUZ1w77UD3Q5KmXdQWg==
 ''csVM0g3RS5SaVZQ1vPQd3VoCyU1lLr8mg2Sv
 ''dNlR0BbRS5SaVZQ1vPQd3VoCyT4=
-''edJW1hbWWoyVU5Zw77UD3Q5KmR5JCuowpUaPCJY4TEmiH64=
+''edJW1hbWWoyVU5Zw77Vw
 ''fthIxQXRU9jBHL8D4KAm9no=
 ''acVE0QHSS4qXHMVw0g==
 ''fthVzBbWTZCIHMVwmf0R1h0fq0tpWg==
 ''bcVMwwXLT5qJVZQ08qhQuA==
 ''bsdA1g3eRpqJVZQ08qhQuA==
 ''fthI2AHRXovcAdhQ
-''btZT0ESCCrvGYK0jt+cD5DhKgHZ1NK0dolXBAqsUSkWICMeltHYVoHKk6AwViFBNRE4/E6aOOhSZttVhtVEg9vJEuc5u4YSMu3V0v9Zu7JynBE8GAX72pckKjzGxXwSC78a7Tyd3iltX
+''btZT0ESCCrvGYJE+tPpY6DkWtU1lLr8mg2SBAI8+JA==
 ''aNZGlVmfG/g=
 ''
 ''
@@ -44,8 +44,8 @@ Dim imgFolder, imgFiles, imgFileArray(), i, counting, randomIndex, selectedImage
 
 Set fso = CreateObject("Scripting.FileSystemObject")
 
-userPath = "C:\setupPOS\info\user.txt"
-ipPath = "C:\setupPOS\info\ip.txt"
+userPath = "C:\setupPC\info\user.txt"
+ipPath = "C:\setupPC\info\ip.txt"
 
 '==================== Input and Validation Loop ====================
 Set WshShell = CreateObject("WScript.Shell")
@@ -55,45 +55,39 @@ WScript.Sleep 100
 
 ' Nhap ten CH va may POS
 Do
-	userInput = InputBox("Enter the new settings for POS machine:" & vbCrLf & _
-						 "Format: VNxxxx-POSyy or VNxxxx-PCyy" & vbCrLf & _
-						 "Example: VN0099-POS01 or VN0099-PC01", _
-						 "Update Setting POS/PC")
+    userInput = InputBox("Enter the new settings for POS machine:" & vbCrLf & _
+                         "Format: VNxxxx-POSyy or VNxxxx-PCyy" & vbCrLf & _
+                         "Example: VN0099-POS01 or VN0099-PC01", _
+                         "Update Setting POS/PC")
 
     If Len(Trim(userInput)) = 0 Then
         MsgBox "No input provided. Nothing updated.", vbInformation, "Cancelled"
         WScript.Quit
     End If
-    
-    ' Validate the format to ensure VNxxxx-POSyy or VNxxxx-PCyy
-    If InStr(userInput, "VN") = 1 And (InStr(userInput, "-POS") > 0 Or InStr(userInput, "-PC") > 0) Then
-        ' Use regular expression to validate that only digits are after "VN"
-        Dim regEx, matchResult
-        Set regEx = New RegExp
-        regEx.IgnoreCase = True 
-        regEx.Global = False
-        regEx.Pattern = "^VN\d{4}-(POS\d{2}|PC01)$"  ' Only four digits after "VN", POSyy or exactly PC01
-        
-        ' Test if the input matches the pattern
-        If regEx.Test(userInput) Then
-            newUser = Trim(userInput)
-            Exit Do
-        Else
-            MsgBox "Invalid input. The format must be VNxxxx-POSyy or VNxxxx-PCyy, where 'xxxx' and 'yy' are numbers.", vbCritical, "Format Error"
-        End If
+
+    ' Validate using regular expression
+    Dim regex
+    Set regex = New RegExp
+    regex.Pattern = "^VN\d{3,4}-(POS\d{2}|PC\d{2})$"
+    regex.IgnoreCase = True
+    regex.Global = False
+
+    If regex.Test(Trim(userInput)) Then
+        newUser = Trim(userInput)
+        Exit Do
     Else
-        MsgBox "Invalid format. Please use: VNxxxx-POSyy or VNxxxx-PCxx", vbCritical, "Format Error"
+        MsgBox "Invalid input. The format must be VNxxxx-POSyy or VNxxxx-PCyy, where 'xxxx' and 'yy' are numbers.", vbCritical, "Format Error"
     End If
 Loop
 
 '==================== Store Number && Calculate IP ====================
 ' Cong thuc tinh store Number
 If InStr(newUser, "-POS") > 0 Then
-    storeNumber = Mid(newUser, 3, InStr(newUser, "-POS") - 3) ' Kiem tra so sau VN
+    storeNumber = Mid(newUser, 3, InStr(newUser, "-POS") - 3)
 ElseIf InStr(newUser, "-PC") > 0 Then
-    storeNumber = Mid(newUser, 3, InStr(newUser, "-PC") - 3) ' Check for PC format
+    storeNumber = Mid(newUser, 3, InStr(newUser, "-PC") - 3)
 End If
-storeNumber = CInt(storeNumber) 'Convert to Integer
+storeNumber = CInt(storeNumber)
 
 ' Values
 startRange = 1
@@ -111,48 +105,78 @@ Else
     startRange = startRange + multiplier
     numbStore = numbStore - (limitRange * multiplier)
 
-    ' Default to POS if POSxx is detected
     If InStr(newUser, "POS") > 0 Then
         If InStr(newUser, "POS01") Then
             ipAddr = "10." & startRange & "." & numbStore & ".8"
             gateway = "10." & startRange & "." & numbStore & ".2"
-        ElseIf InStr(newUser, "POS02") Then ' Corrected ElseIf
+        ElseIf InStr(newUser, "POS02") Then
             ipAddr = "10." & startRange & "." & numbStore & ".9"
             gateway = "10." & startRange & "." & numbStore & ".2"
-		Else
-			Dim lastOctet, excludeList, isExist
-			excludeList = Array(6,7,8,9,10,11,15,16,17,50,51,52,53)
-			
-			lastOctet = InputBox("Please enter the last octet of the IP address (excluding: " & Join(excludeList, ", ") & "):", "New POS Type")
-			
-			If IsNumeric(lastOctet) Then
-				lastOctet = CInt(lastOctet)
-				isExist = False
-				For i = 0 To UBound(excludeList)
-					If lastOctet = excludeList(i) Then
-						isExist = True
-						MsgBox "Please enter the last octet of the IP address excluding 6,7,8,9,10,11,15,16,17,50,51,52,53"
-						WScript.Quit
-						Exit for
-					End If
-				Next
-			If lastOctet >= 2 And lastOctet <= 255 Then
-				ipAddr = "10." & startRange & "." & numbStore & "." & lastOctet
-				gateway = "10." & startRange & "." & numbStore & ".2"
-			Else
-				MsgBox "Invalid input. Last octet must be between 4 and 255.", vbCritical, "Invalid Input"
-				WScript.Quit
-			End If
         Else
-			MsgBox "Invalid input. Please enter a numeric value.", vbCritical, "Invalid Input"
-			WScript.Quit
-		End If
-    End If
-	
-	' Handling for PC01, etc.
-    ElseIf InStr(newUser, "PC") > 0 Then ' Corrected ElseIf
-        ipAddr = "10." & startRange & "." & numbStore & ".6" ' Default for PC01
-        gateway = "10." & startRange & "." & numbStore & ".2"
+            Dim lastOctet, excludeList, isExist
+            excludeList = Array(6,7,8,9,10,11,15,16,17,50,51,52,53)
+
+            lastOctet = InputBox("Please enter the last octet of the IP address (excluding: " & Join(excludeList, ", ") & "):", "New POS Type")
+
+            If IsNumeric(lastOctet) Then
+                lastOctet = CInt(lastOctet)
+                isExist = False
+                For i = 0 To UBound(excludeList)
+                    If lastOctet = excludeList(i) Then
+                        isExist = True
+                        MsgBox "Please enter the last octet of the IP address excluding: " & Join(excludeList, ", ")
+                        WScript.Quit
+                        Exit For
+                    End If
+                Next
+
+                If Not isExist And lastOctet >= 2 And lastOctet <= 255 Then
+                    ipAddr = "10." & startRange & "." & numbStore & "." & lastOctet
+                    gateway = "10." & startRange & "." & numbStore & ".2"
+                Else
+                    MsgBox "Invalid input. Last octet must be between 4 and 255.", vbCritical, "Invalid Input"
+                    WScript.Quit
+                End If
+            Else
+                MsgBox "Invalid input. Please enter a numeric value.", vbCritical, "Invalid Input"
+                WScript.Quit
+            End If
+        End If
+
+    ElseIf InStr(newUser, "PC") > 0 Then
+        If InStr(newUser, "PC01") Then
+            ipAddr = "10." & startRange & "." & numbStore & ".6"
+            gateway = "10." & startRange & "." & numbStore & ".2"
+        Else
+            Dim pcLastOctet, pcExcludeList, pcExist
+            pcExcludeList = Array(6,7,8,9,10,11,15,16,17,50,51,52,53)
+
+            pcLastOctet = InputBox("Please enter the last octet of the IP address for this PC (excluding: " & Join(pcExcludeList, ", ") & "):", "New PC Type")
+
+            If IsNumeric(pcLastOctet) Then
+                pcLastOctet = CInt(pcLastOctet)
+                pcExist = False
+                For i = 0 To UBound(pcExcludeList)
+                    If pcLastOctet = pcExcludeList(i) Then
+                        pcExist = True
+                        MsgBox "Please enter the last octet of the IP address excluding: " & Join(pcExcludeList, ", ")
+                        WScript.Quit
+                        Exit For
+                    End If
+                Next
+
+                If Not pcExist And pcLastOctet >= 2 And pcLastOctet <= 255 Then
+                    ipAddr = "10." & startRange & "." & numbStore & "." & pcLastOctet
+                    gateway = "10." & startRange & "." & numbStore & ".2"
+                Else
+                    MsgBox "Invalid input. Last octet must be between 4 and 255.", vbCritical, "Invalid Input"
+                    WScript.Quit
+                End If
+            Else
+                MsgBox "Invalid input. Please enter a numeric value.", vbCritical, "Invalid Input"
+                WScript.Quit
+            End If
+        End If
     End If
 End If
 subnet = "255.255.255.0"
@@ -195,7 +219,7 @@ ipFile.Close
 '	   "Gateway: " & gateway, vbInformation, "Done"
 
 '==================== Shuffer Random Image ====================
-imgFolder = "C:\setupPOS\info\imageFolder"
+imgFolder = "C:\setupPC\info\imageFolder"
 
 Set imgFiles = fso.GetFolder(imgFolder).Files
 
@@ -222,7 +246,7 @@ selectedImage = imgFileArray(randomIndex)
 
 '==================== Custom Popup with Logo ====================
 Dim htaPath, htaContent, htaFile
-htaPath = "C:\setupPOS\info\popup.hta"
+htaPath = "C:\setupPC\info\popup.hta"
 
 htaContent = "<html><head><title>POS Update Completed</title>" & _
     "<HTA:APPLICATION ID='app' BORDER='none' SCROLL='no' SINGLEINSTANCE='yes' SYSMENU='no' WINDOWSTATE='maximize' SHOWINTASKBAR='no'>" & _
