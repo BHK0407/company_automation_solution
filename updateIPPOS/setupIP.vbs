@@ -44,8 +44,8 @@ Dim imgFolder, imgFiles, imgFileArray(), i, counting, randomIndex, selectedImage
 
 Set fso = CreateObject("Scripting.FileSystemObject")
 
-userPath = "C:\setupPC\info\user.txt"
-ipPath = "C:\setupPC\info\ip.txt"
+userPath = "C:\setup\info\user.txt"
+ipPath = "C:\setup\info\ip.txt"
 
 '==================== Input and Validation Loop ====================
 Set WshShell = CreateObject("WScript.Shell")
@@ -219,7 +219,7 @@ ipFile.Close
 '	   "Gateway: " & gateway, vbInformation, "Done"
 
 '==================== Shuffer Random Image ====================
-imgFolder = "C:\setupPC\info\imageFolder"
+imgFolder = "C:\setup\info\imageFolder"
 
 Set imgFiles = fso.GetFolder(imgFolder).Files
 
@@ -246,7 +246,7 @@ selectedImage = imgFileArray(randomIndex)
 
 '==================== Custom Popup with Logo ====================
 Dim htaPath, htaContent, htaFile
-htaPath = "C:\setupPC\info\popup.hta"
+htaPath = "C:\setup\info\popup.hta"
 
 htaContent = "<html><head><title>POS Update Completed</title>" & _
     "<HTA:APPLICATION ID='app' BORDER='none' SCROLL='no' SINGLEINSTANCE='yes' SYSMENU='no' WINDOWSTATE='maximize' SHOWINTASKBAR='no'>" & _
